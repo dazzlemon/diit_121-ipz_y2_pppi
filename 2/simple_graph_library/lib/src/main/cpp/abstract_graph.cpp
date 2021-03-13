@@ -4,7 +4,56 @@
 #include <queue>
 #include <algorithm>
 
+class _StackWrapper {
+    std::stack<Vertex> s;
+public:
+    void push(const Vertex& v) {
+        s.push(v);
+    }
+
+    Vertex pop() {
+        auto v = s.top();
+        s.pop();
+        return v;
+    }
+
+    bool empty() {
+        return s.empty();
+    }
+};
+
+
+class _QueueWrapper {
+    std::queue<Vertex> q;
+public:
+    void push(const Vertex& v) {
+        q.push(v);
+    }
+
+    Vertex pop() {
+        auto v = q.front();
+        q.pop();
+        return v;
+    }
+
+    bool empty() {
+        return q.empty();
+    }
+};
+
+
 auto AbstractGraph::dfs(Vertex v) -> std::vector<Vertex> {
+    return this->_search<_StackWrapper>(v);
+}
+
+
+auto AbstractGraph::bfs(Vertex v) -> std::vector<Vertex> {
+    return this->_search<_QueueWrapper>(v);
+}
+
+
+template<class T>
+auto AbstractGraph::_search(Vertex v) -> std::vector<Vertex> {
     /**
      * 1st iterative algorithm from wiki
      * https://en.wikipedia.org/wiki/Depth-first_search
@@ -19,40 +68,18 @@ auto AbstractGraph::dfs(Vertex v) -> std::vector<Vertex> {
      *              for all edges from v to w in G.adjacentEdges(v) do 
      *                  S.push(w)
      * ====================================================================
+     * if stack is replaced with queue we'll get bfs
      */
-    std::stack<Vertex> s;
-    s.push(v);
+    T collection;
+    collection.push(v);
     std::vector<Vertex> discovered;
-    while (!s.empty()) {
-        v = s.top(); s.pop();// single action actually
+    while (!collection.empty()) {
+        v = collection.pop();
         if (std::none_of(discovered.begin(), discovered.end(),
                 [&] (Vertex i) { return i <=> v == 0; })) {// idk why i == v didnt work
             discovered.push_back(v);
             for (auto w : this->neighbours(v)) {
-                s.push(w);
-            }
-        }
-    }
-    return discovered;
-}
-
-
-auto AbstractGraph::bfs(Vertex v) -> std::vector<Vertex> {
-    /**
-     * same algo as dfs
-     * but with queue
-     * can't factor out because stack and queue have different interfaces
-     */
-    std::queue<Vertex> q;/////////////////////////////////////////////////////////////// different from dfs
-    q.push(v);
-    std::vector<Vertex> discovered;
-    while (!q.empty()) {
-        v = q.front(); q.pop();// single action actually//////////////////////////////// different from dfs
-        if (std::none_of(discovered.begin(), discovered.end(),
-                [&] (Vertex i) { return i <=> v == 0; })) {// idk why i == v didnt work
-            discovered.push_back(v);
-            for (auto w : this->neighbours(v)) {
-                q.push(w);
+                collection.push(w);
             }
         }
     }
