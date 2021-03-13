@@ -5,7 +5,7 @@
 
 class Vertex {
 public:
-    int data;// tmp
+    int data;// tmp, need to replace with actual data type
 
     auto operator<=>(const Vertex& other) -> std::strong_ordering;
 };
