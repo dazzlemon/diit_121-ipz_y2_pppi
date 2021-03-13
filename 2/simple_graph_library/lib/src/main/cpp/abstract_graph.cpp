@@ -1,6 +1,7 @@
 #include "abstract_graph.h"
 #include "vertex.h"
 #include <stack>
+#include <queue>
 #include <algorithm>
 
 auto AbstractGraph::dfs(Vertex v) -> std::vector<Vertex> {
@@ -38,22 +39,22 @@ auto AbstractGraph::dfs(Vertex v) -> std::vector<Vertex> {
 
 auto AbstractGraph::bfs(Vertex v) -> std::vector<Vertex> {
     /**
-     * the only algorithm on wiki
-     * https://en.wikipedia.org/wiki/Breadth-first_search
-     * ========================================================
-     * procedure BFS(G, root) is
-     *      let Q be a queue
-     *      label root as discovered
-     *      Q.enqueue(root)
-     *      while Q is not empty do
-     *      v := Q.dequeue()
-     *      if v is the goal then
-     *          return v
-     *      for all edges from v to w in G.adjacentEdges(v) do
-     *          if w is not labeled as discovered then
-     *              label w as discovered
-     *              Q.enqueue(w)
-     * ========================================================
+     * same algo as dfs
+     * but with queue
+     * can't factor out because stack and queue have different interfaces
      */
-    return {};
+    std::queue<Vertex> q;/////////////////////////////////////////////////////////////// different from dfs
+    q.push(v);
+    std::vector<Vertex> discovered;
+    while (!q.empty()) {
+        v = q.front(); q.pop();// single action actually//////////////////////////////// different from dfs
+        if (std::none_of(discovered.begin(), discovered.end(),
+                [&] (Vertex i) { return i <=> v == 0; })) {// idk why i == v didnt work
+            discovered.push_back(v);
+            for (auto w : this->neighbours(v)) {
+                q.push(w);
+            }
+        }
+    }
+    return discovered;
 }

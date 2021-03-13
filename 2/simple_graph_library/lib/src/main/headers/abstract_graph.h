@@ -2,7 +2,6 @@
 #define ABSTRACT_GRAPH_H
 
 #include "vertex.h"
-#include "edge.h"
 #include <vector>
 
 class AbstractGraph {
