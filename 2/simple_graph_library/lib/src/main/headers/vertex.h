@@ -1,12 +1,12 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
+#include <compare>
+
 class Vertex {
 public:
-    // just placeholders
-    bool is_marked;
-    bool is_explored;
+    int data;// tmp
 
-    bool good() { return true; }
+    auto operator<=>(const Vertex& other) -> std::strong_ordering;
 };
 #endif
