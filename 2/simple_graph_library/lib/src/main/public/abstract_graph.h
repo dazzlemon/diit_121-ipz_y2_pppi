@@ -7,6 +7,7 @@
 #define ABSTRACT_GRAPH_EXPORT_FUNC
 #endif
 
+#include "igraph.h"
 #include "vertex.h"
 #include <vector>
 #include <stack>
@@ -14,15 +15,14 @@
 
 namespace simple_graph_library {
 
-class AbstractGraph {
+class AbstractGraph : IGraph {
     template<class T>
     auto _search(Vertex v) -> std::vector<Vertex>;
 public:
-    auto dfs(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
-    auto bfs(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
-    auto euler_tour() -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
-
-    virtual auto neighbours(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC = 0;
+    // cant use trailing return type for virtual functions
+    std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC dfs(Vertex v) final;
+    std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC bfs(Vertex v) final;
+    std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC euler_tour() final;
 };
 }// namespace simple_graph_library
 
