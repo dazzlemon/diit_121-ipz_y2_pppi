@@ -14,6 +14,18 @@ auto AbstractGraph::bfs(Vertex v) -> std::vector<Vertex> {
 
 
 auto AbstractGraph::is_eulerian() -> bool {
+    /**
+     * https://algorithmist.com/wiki/Euler_tour
+     * ================================================
+     * find_tour(u):
+     *      for each edge e=(u,v) in E:
+     *          remove e from E
+     *          find_tour(v)
+     *      prepend u to tour
+     * 
+     * //where u is any vertex with a non-zero degree.
+     * ================================================
+     */
     return true;
 }
 
