@@ -15,7 +15,7 @@
 
 namespace simple_graph_library {
 
-class AbstractGraph : IGraph {
+class AbstractGraph : public IGraph {
     template<class T>
     auto _search(Vertex v) -> std::vector<Vertex>;
 public:

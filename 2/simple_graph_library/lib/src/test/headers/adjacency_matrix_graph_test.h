@@ -1,12 +1,12 @@
 #ifndef ADJACENCY_MATRIX_GRAPH_TEST
 #define ADJACENCY_MATRIX_GRAPH_TEST
 
+#include "adjacency_matrix_graph.h"
 #include "igraph_test.h"
-#include <iostream>
 
 auto adjacency_matrix_graph_tests() {
-    igraph_test();
-    std::cout << "AdjacencyMatrixGraph tests" << std::endl;
+    auto graph = simple_graph_library::AdjacencyMatrixGraph();
+    igraph_test(graph);
 }
 
 #endif

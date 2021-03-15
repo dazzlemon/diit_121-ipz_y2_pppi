@@ -19,10 +19,10 @@ public:
 
     virtual auto neighbours(Vertex v) -> std::vector<Vertex> IGRAPH_EXPORT_FUNC = 0;
 
-    virtual void add_vertex(Vertex v) = 0;
-    virtual void add_edge(Vertex a, Vertex b) = 0;
-    virtual void remove_vertex(Vertex v) = 0;
-    virtual void remove_edge(Vertex a, Vertex b) = 0;
+    virtual void IGRAPH_EXPORT_FUNC add_vertex(Vertex v) = 0;
+    virtual void IGRAPH_EXPORT_FUNC add_edge(Vertex a, Vertex b) = 0;
+    virtual void IGRAPH_EXPORT_FUNC remove_vertex(Vertex v) = 0;
+    virtual void IGRAPH_EXPORT_FUNC remove_edge(Vertex a, Vertex b) = 0;
 };
 }// namespace simple_graph_library
 #endif
