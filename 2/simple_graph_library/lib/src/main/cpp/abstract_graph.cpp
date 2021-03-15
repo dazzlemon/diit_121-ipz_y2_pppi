@@ -11,4 +11,14 @@ auto AbstractGraph::dfs(Vertex v) -> std::vector<Vertex> {
 auto AbstractGraph::bfs(Vertex v) -> std::vector<Vertex> {
     return this->_search<details::QueueWrapper>(v);
 }
+
+
+auto AbstractGraph::is_eulerian() -> bool {
+    return true;
+}
+
+
+auto AbstractGraph::euler_tour() -> std::vector<Vertex> {
+    return {};
+}
 }// namespace simple_graph_library

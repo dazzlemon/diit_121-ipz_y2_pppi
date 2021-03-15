@@ -20,48 +20,12 @@ class AbstractGraph {
 public:
     auto dfs(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
     auto bfs(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
+    auto is_eulerian() -> bool ABSTRACT_GRAPH_EXPORT_FUNC;
+    auto euler_tour() -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
 
     virtual auto neighbours(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC = 0;
 };
 }// namespace simple_graph_library
-
-
-class _StackWrapper {
-    std::stack<Vertex> s;
-public:
-    void push(const Vertex& v) {
-        s.push(v);
-    }
-
-    Vertex pop() {
-        auto v = s.top();
-        s.pop();
-        return v;
-    }
-
-    bool empty() {
-        return s.empty();
-    }
-};
-
-
-class _QueueWrapper {
-    std::queue<Vertex> q;
-public:
-    void push(const Vertex& v) {
-        q.push(v);
-    }
-
-    Vertex pop() {
-        auto v = q.front();
-        q.pop();
-        return v;
-    }
-
-    bool empty() {
-        return q.empty();
-    }
-};
 
 
 template<class T>
