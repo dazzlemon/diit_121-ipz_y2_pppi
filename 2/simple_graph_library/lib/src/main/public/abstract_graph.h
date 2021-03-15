@@ -20,7 +20,6 @@ class AbstractGraph {
 public:
     auto dfs(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
     auto bfs(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
-    auto is_eulerian() -> bool ABSTRACT_GRAPH_EXPORT_FUNC;
     auto euler_tour() -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC;
 
     virtual auto neighbours(Vertex v) -> std::vector<Vertex> ABSTRACT_GRAPH_EXPORT_FUNC = 0;
