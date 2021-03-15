@@ -1,13 +1,14 @@
 #include "abstract_graph.h"
+#include "abstract_graph_details.h"
 
 namespace simple_graph_library {
 
 auto AbstractGraph::dfs(Vertex v) -> std::vector<Vertex> {
-    return this->_search<_StackWrapper>(v);
+    return this->_search<details::StackWrapper>(v);
 }
 
 
 auto AbstractGraph::bfs(Vertex v) -> std::vector<Vertex> {
-    return this->_search<_QueueWrapper>(v);
+    return this->_search<details::QueueWrapper>(v);
 }
 }// namespace simple_graph_library
