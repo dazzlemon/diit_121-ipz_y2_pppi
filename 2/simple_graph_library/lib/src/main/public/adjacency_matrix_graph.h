@@ -7,7 +7,7 @@
 #define ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
 #endif
 
-#include <iostream>
+#include <iostream>// tmp
 #include "abstract_graph.h"
 #include "vertex.h"
 
@@ -15,7 +15,8 @@ namespace simple_graph_library {
 
 template<class T>
 class AdjacencyMatrixGraph : public AbstractGraph<T> {
-    std::vector<Vertex<T>> ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC neighbours(Vertex<T> v) final {
+    std::vector<Vertex<T>> ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
+            neighbours(Vertex<T> v) final {
         std::cout << "AdjacencyMatrixGraph::neighbours" << std::endl;
         return {};
     }
@@ -26,7 +27,8 @@ class AdjacencyMatrixGraph : public AbstractGraph<T> {
     }
 
 
-    void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC add_edge(Vertex<T> a, Vertex<T> b) final {
+    void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
+            add_edge(Vertex<T> a, Vertex<T> b) final {
         std::cout << "AdjacencyMatrixGraph::add_edge" << std::endl;
     }
 
@@ -36,13 +38,11 @@ class AdjacencyMatrixGraph : public AbstractGraph<T> {
     }
 
 
-    void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC remove_edge(Vertex<T> a, Vertex<T> b) final {
+    void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
+            remove_edge(Vertex<T> a, Vertex<T> b) final {
         std::cout << "AdjacencyMatrixGraph::remove_edge" << std::endl;
     }
 };
-
-
-
 }// namespace simple_graph_library
 
 #endif

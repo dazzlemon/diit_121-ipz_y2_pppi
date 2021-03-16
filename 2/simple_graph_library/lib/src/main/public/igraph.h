@@ -15,11 +15,17 @@ namespace simple_graph_library {
 template<class T>
 class IGraph {
 public:
-    virtual auto dfs(Vertex<T> v) -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
-    virtual auto bfs(Vertex<T> v) -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
-    virtual auto euler_tour() -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
+    virtual auto dfs(Vertex<T> v)
+        -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
+    
+    virtual auto bfs(Vertex<T> v)
+        -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
+    
+    virtual auto euler_tour()
+        -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
 
-    virtual auto neighbours(Vertex<T> v) -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
+    virtual auto neighbours(Vertex<T> v)
+        -> std::vector<Vertex<T>> IGRAPH_EXPORT_FUNC = 0;
 
     virtual void IGRAPH_EXPORT_FUNC add_vertex(Vertex<T> v) = 0;
     virtual void IGRAPH_EXPORT_FUNC add_edge(Vertex<T> a, Vertex<T> b) = 0;

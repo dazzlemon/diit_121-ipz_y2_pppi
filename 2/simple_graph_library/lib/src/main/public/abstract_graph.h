@@ -23,7 +23,7 @@ class AbstractGraph : public IGraph<T> {
         /**
          * 1st iterative algorithm from wiki
          * https://en.wikipedia.org/wiki/Depth-first_search
-         * ====================================================================
+         * =====================================================================
          * procedure DFS_iterative(G, v) is
          *      let S be a stack
          *      S.push(v)
@@ -33,7 +33,7 @@ class AbstractGraph : public IGraph<T> {
          *              label v as discovered
          *              for all edges from v to w in G.adjacentEdges(v) do 
          *                  S.push(w)
-         * ====================================================================
+         * =====================================================================
          * if stack is replaced with queue we'll get bfs
          */
         C collection;
@@ -42,7 +42,8 @@ class AbstractGraph : public IGraph<T> {
         while (!collection.empty()) {
             v = collection.pop();
             if (std::none_of(discovered.begin(), discovered.end(),
-                    [&] (Vertex<T> i) { return i <=> v == 0; })) {// idk why i == v didnt work
+                    [&] (Vertex<T> i) { return i <=> v == 0; })) {
+                    // idk why i == v didnt work
                 discovered.push_back(v);
                 for (auto w : this->neighbours(v)) {
                     collection.push(w);
@@ -66,23 +67,28 @@ public:
     auto euler_tour() -> std::vector<Vertex<T>> final {
         /**
          * http://www.graph-magics.com/articles/euler.php
-         * ===========================================================================================
+         * =====================================================================
          * 1. Start with an empty stack and an empty circuit (eulerian path).
          *      - If all vertices have even degree - choose any of them.
-         *      - If there are exactly 2 vertices having an odd degree - choose one of them.
+         *      - If there are exactly 2 vertices having an odd degree
+         *      -       choose one of them.
          *      - Otherwise no euler circuit or path exists.
          * 2.
          * If current vertex has no neighbors
          *      add it to circuit,
-         *      remove the last vertex from the stack and set it as the current one.
+         *      remove the last vertex from the stack
+         *      and set it as the current one.
          * Otherwise (in case it has neighbors)
          *      add the vertex to the stack,
-         *      take any of its neighbors, remove the edge between selected neighbor and that vertex,
+         *      take any of its neighbors, remove the edge between
+         *      selected neighbor and that vertex,
          *      and set that neighbor as the current vertex.
-         * 3. Repeat step 2 until the current vertex has no more neighbors and the stack is empty.
+         * 3. Repeat step 2 until the current vertex has no more neighbors
+         *    and the stack is empty.
          * 
-         * Note that obtained circuit will be in reverse order - from end vertex to start vertex.
-         * ===========================================================================================
+         * Note that obtained
+         * circuit will be in reverse order - from end vertex to start vertex.
+         * =====================================================================
          */
 
         std::stack<Vertex<T>> s;
@@ -106,7 +112,8 @@ public:
                     v = s.top(); s.pop();// one action actually
                 } else {
                     s.push(v);
-                    // take any of v's neighbours, remove the edge between them, set v as chosen neighbour
+                    // take any of v's neighbours, remove the edge between them,
+                    // set v as chosen neighbour
                 }
             }
         } while (!this->neighbours(v).empty() || !s.empty());
