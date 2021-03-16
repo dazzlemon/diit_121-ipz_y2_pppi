@@ -6,14 +6,16 @@
 #include <queue>
 
 namespace details {
+
+template<class T>
 class StackWrapper {
-    std::stack<Vertex> s;
+    std::stack<simple_graph_library::Vertex<T>> s;
 public:
-    void push(const Vertex& v) {
+    void push(const simple_graph_library::Vertex<T>& v) {
         s.push(v);
     }
 
-    Vertex pop() {
+    simple_graph_library::Vertex<T> pop() {
         auto v = s.top();
         s.pop();
         return v;
@@ -25,14 +27,15 @@ public:
 };
 
 
+template<class T>
 class QueueWrapper {
-    std::queue<Vertex> q;
+    std::queue<simple_graph_library::Vertex<T>> q;
 public:
-    void push(const Vertex& v) {
+    void push(const simple_graph_library::Vertex<T>& v) {
         q.push(v);
     }
 
-    Vertex pop() {
+    simple_graph_library::Vertex<T> pop() {
         auto v = q.front();
         q.pop();
         return v;

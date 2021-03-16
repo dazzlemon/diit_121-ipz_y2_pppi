@@ -9,41 +9,40 @@
 
 #include <iostream>// tmp
 #include "abstract_graph.h"
+#include "vertex.h"
 
 namespace simple_graph_library {
-class AdjacencyListGraph : public AbstractGraph {
-    std::vector<Vertex> ADJACENCY_LIST_GRAPH_EXPORT_FUNC neighbours(Vertex v) final;
-    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC add_vertex(Vertex v) final;
-    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC add_edge(Vertex a, Vertex b) final;
-    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC remove_vertex(Vertex v) final;
-    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC remove_edge(Vertex a, Vertex b) final;
+
+template<class T>
+class AdjacencyListGraph : public AbstractGraph<T> {
+    std::vector<Vertex<T>> ADJACENCY_LIST_GRAPH_EXPORT_FUNC neighbours(Vertex<T> v) final {
+        std::cout << "AdjacencyListGraph::neighbours" << std::endl;
+        return {};
+    }
+
+
+    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC add_vertex(Vertex<T> v) final {
+        std::cout << "AdjacencyListGraph::add_vertex" << std::endl;
+    }
+
+
+    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC add_edge(Vertex<T> a, Vertex<T> b) final {
+        std::cout << "AdjacencyListGraph::add_edge" << std::endl;
+    }
+
+
+    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC remove_vertex(Vertex<T> v) final {
+        std::cout << "AdjacencyListGraph::remove_vertex" << std::endl;
+    }
+
+
+    void ADJACENCY_LIST_GRAPH_EXPORT_FUNC remove_edge(Vertex<T> a, Vertex<T> b) final {
+        std::cout << "AdjacencyListGraph::remove_edge" << std::endl;
+    }
 };
 
 
-std::vector<Vertex> ADJACENCY_LIST_GRAPH_EXPORT_FUNC AdjacencyListGraph::neighbours(Vertex v) {
-    std::cout << "AdjacencyListGraph::neighbours" << std::endl;
-    return {};
-}
 
-
-void ADJACENCY_LIST_GRAPH_EXPORT_FUNC AdjacencyListGraph::add_vertex(Vertex v) {
-    std::cout << "AdjacencyListGraph::add_vertex" << std::endl;
-}
-
-
-void ADJACENCY_LIST_GRAPH_EXPORT_FUNC AdjacencyListGraph::add_edge(Vertex a, Vertex b) {
-    std::cout << "AdjacencyListGraph::add_edge" << std::endl;
-}
-
-
-void ADJACENCY_LIST_GRAPH_EXPORT_FUNC AdjacencyListGraph::remove_vertex(Vertex v) {
-    std::cout << "AdjacencyListGraph::remove_vertex" << std::endl;
-}
-
-
-void ADJACENCY_LIST_GRAPH_EXPORT_FUNC AdjacencyListGraph::remove_edge(Vertex a, Vertex b) {
-    std::cout << "AdjacencyListGraph::remove_edge" << std::endl;
-}
 }// namespace simple_graph_library
 
 #endif
