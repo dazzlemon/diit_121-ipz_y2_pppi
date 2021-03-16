@@ -1,47 +1,55 @@
 #ifndef ABSTRACT_GRAPH_DETAILS_H
 #define ABSTRACT_GRAPH_DETAILS_H
 
-#include "vertex.h"
 #include <stack>
 #include <queue>
 
 namespace details {
 
 template<class T>
-class StackWrapper {
-    std::stack<simple_graph_library::Vertex<T>> s;
+class IPushPopCollection {
 public:
-    void push(const simple_graph_library::Vertex<T>& v) {
-        s.push(v);
+    virtual void push(const T& t) = 0;
+    virtual auto pop() -> T = 0;
+    virtual bool empty() = 0;
+};
+
+
+template<class T>
+class StackWrapper : public IPushPopCollection<T> {
+    std::stack<T> s;
+public:
+    void push(const T& t) final {
+        s.push(t);
     }
 
-    simple_graph_library::Vertex<T> pop() {
-        auto v = s.top();
+    T pop() final {
+        auto t = s.top();
         s.pop();
-        return v;
+        return t;
     }
 
-    bool empty() {
+    bool empty() final {
         return s.empty();
     }
 };
 
 
 template<class T>
-class QueueWrapper {
-    std::queue<simple_graph_library::Vertex<T>> q;
+class QueueWrapper : public IPushPopCollection<T> {
+    std::queue<T> q;
 public:
-    void push(const simple_graph_library::Vertex<T>& v) {
-        q.push(v);
+    void push(const T& t) final {
+        q.push(t);
     }
 
-    simple_graph_library::Vertex<T> pop() {
-        auto v = q.front();
+    T pop() final {
+        auto t = q.front();
         q.pop();
-        return v;
+        return t;
     }
 
-    bool empty() {
+    bool empty() final {
         return q.empty();
     }
 };

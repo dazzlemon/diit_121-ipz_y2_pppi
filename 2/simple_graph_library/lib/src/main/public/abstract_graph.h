@@ -13,12 +13,17 @@
 #include <vector>
 #include <stack>
 #include <queue>
+#include <concepts>
 
 namespace simple_graph_library {
 
 template<class T>
 class AbstractGraph : public IGraph<T> {
-    template<class C>
+    template<template<class> class C>
+        requires std::derived_from<
+            C<Vertex<T>>,
+            details::IPushPopCollection<Vertex<T>>
+        >
     auto _search(Vertex<T> v) -> std::vector<Vertex<T>> {
         /**
          * 1st iterative algorithm from wiki
@@ -36,7 +41,7 @@ class AbstractGraph : public IGraph<T> {
          * =====================================================================
          * if stack is replaced with queue we'll get bfs
          */
-        C collection;
+        C<Vertex<T>> collection;
         collection.push(v);
         std::vector<Vertex<T>> discovered;
         while (!collection.empty()) {
@@ -55,12 +60,12 @@ class AbstractGraph : public IGraph<T> {
 public:
     // cant use trailing return type for virtual functions
     auto dfs(Vertex<T> v) -> std::vector<Vertex<T>> final {
-        return this->_search<details::StackWrapper<T>>(v);
+        return this->_search<details::StackWrapper>(v);
     }
 
 
     auto bfs(Vertex<T> v) -> std::vector<Vertex<T>> final {
-        return this->_search<details::QueueWrapper<T>>(v);
+        return this->_search<details::QueueWrapper>(v);
     }
 
 
