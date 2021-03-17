@@ -99,16 +99,16 @@ public:
         std::stack<Vertex<T>> s;
         std::vector<Vertex<T>> circuit;
         
-        size_t n_odd_degree = 0;// count odd degree vertices
-        if (n_odd_degree == 0) {
-            // choose any even degree node
-        } else if (n_odd_degree == 2) {
-            // choose one of odd degree nodes
-        } else {
-            // no euler path exists
-        }
-
+        
         Vertex<T> v;// current vertex
+        size_t n_odd_degree = -1;// count odd degree vertices
+        if (n_odd_degree == 0) {
+            v;// TODO: choose any even degree node
+        } else if (n_odd_degree == 2) {
+            v;// TODO: choose one of odd degree nodes
+        } else {
+            return {};// no euler path exists
+        }
 
         do {
             if (this->neighbours(v).empty()) {
@@ -122,8 +122,6 @@ public:
                 }
             }
         } while (!this->neighbours(v).empty() || !s.empty());
-
-        return {};
     }
 };
 }// namespace simple_graph_library
