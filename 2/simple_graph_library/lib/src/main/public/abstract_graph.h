@@ -122,6 +122,7 @@ public:
                 }
             }
         } while (!this->neighbours(v).empty() || !s.empty());
+        return circuit;
     }
 };
 }// namespace simple_graph_library

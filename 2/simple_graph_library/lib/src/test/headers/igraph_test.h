@@ -7,30 +7,6 @@
 
 template<template<class> class G>
     requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
-void igraph_test() {
-    
-    G<int> graph;
-
-
-    graph.add_edge(
-        simple_graph_library::Vertex<int>(),
-        simple_graph_library::Vertex<int>()
-    );
-    graph.add_vertex(simple_graph_library::Vertex<int>());
-    graph.bfs(simple_graph_library::Vertex<int>());
-    graph.dfs(simple_graph_library::Vertex<int>());
-    graph.euler_tour();
-    graph.neighbours(simple_graph_library::Vertex<int>());
-    graph.remove_edge(
-        simple_graph_library::Vertex<int>(),
-        simple_graph_library::Vertex<int>()
-    );
-    graph.remove_vertex(simple_graph_library::Vertex<int>());
-}
-
-
-template<template<class> class G>
-    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
 G<int> _search_test_case() {
     G<int> graph;
     graph.add_vertex(simple_graph_library::Vertex<int>(/*A*/));
@@ -94,7 +70,7 @@ void bfs_test() {
      */
 
     auto graph = _search_test_case<G>();
-    graph.bfs(simple_graph_library::Vertex<char>(/*A*/));
+    graph.bfs(simple_graph_library::Vertex<int>(/*A*/));
     // TODO: assert result + TODO vertex
 }
 
@@ -125,7 +101,7 @@ void dfs_test() {
      */
 
     auto graph = _search_test_case<G>();
-    graph.dfs(simple_graph_library::Vertex<char>(/*A*/));
+    graph.dfs(simple_graph_library::Vertex<int>(/*A*/));
     // TODO: assert result + TODO vertex
 }
 
@@ -176,6 +152,44 @@ void euler_test() {
      * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
      * 
      */
+    G<int> graph;
+    graph.add_vertex(simple_graph_library::Vertex<int>(/*A*/));
+    graph.add_vertex(simple_graph_library::Vertex<int>(/*B*/));
+    graph.add_vertex(simple_graph_library::Vertex<int>(/*C*/));
+    graph.add_vertex(simple_graph_library::Vertex<int>(/*D*/));
+
+    graph.add_edge(
+        simple_graph_library::Vertex<int>(/*A*/),
+        simple_graph_library::Vertex<int>(/*B*/)
+    );
+    graph.add_edge(
+        simple_graph_library::Vertex<int>(/*A*/),
+        simple_graph_library::Vertex<int>(/*C*/)
+    );
+    graph.add_edge(
+        simple_graph_library::Vertex<int>(/*B*/),
+        simple_graph_library::Vertex<int>(/*C*/)
+    );
+    graph.add_edge(
+        simple_graph_library::Vertex<int>(/*D*/),
+        simple_graph_library::Vertex<int>(/*B*/)
+    );
+    graph.add_edge(
+        simple_graph_library::Vertex<int>(/*D*/),
+        simple_graph_library::Vertex<int>(/*C*/)
+    );
+
+    graph.euler_tour();
+    // TODO: assert result + TODO vertex
+}
+
+
+template<template<class> class G>
+    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
+void igraph_test() {
+    bfs_test<G>();
+    dfs_test<G>();
+    euler_test<G>();
 }
 
 #endif
