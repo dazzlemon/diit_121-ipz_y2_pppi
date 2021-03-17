@@ -101,11 +101,11 @@ public:
         
         
         Vertex<T> v;// current vertex
-        size_t n_odd_degree = -1;// count odd degree vertices
+        size_t n_odd_degree = -1/*count odd degree vertices*/;// TODO
         if (n_odd_degree == 0) {
-            v;// TODO: choose any even degree node
+            v /* = choose any even degree node*/;// TODO
         } else if (n_odd_degree == 2) {
-            v;// TODO: choose one of odd degree nodes
+            v /* = choose one of odd degree nodes*/;// TODO
         } else {
             return {};// no euler path exists
         }

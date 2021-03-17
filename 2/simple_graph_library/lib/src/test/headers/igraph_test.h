@@ -3,8 +3,11 @@
 
 #include "igraph.h"
 #include "vertex.h"
+#include <concepts>
 
-void igraph_test(simple_graph_library::IGraph<int>& graph) {
+template<template<class> class G>
+    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
+void igraph_test() {
     /**
      * test case for dfs, bfs
      * expected output:
@@ -28,6 +31,7 @@ void igraph_test(simple_graph_library::IGraph<int>& graph) {
      * @@    @@@@@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
      * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
      */
+    G<int> graph;
 
 
     graph.add_edge(
@@ -44,6 +48,10 @@ void igraph_test(simple_graph_library::IGraph<int>& graph) {
         simple_graph_library::Vertex<int>()
     );
     graph.remove_vertex(simple_graph_library::Vertex<int>());
+}
+
+void bfs_test() {
+
 }
 
 #endif

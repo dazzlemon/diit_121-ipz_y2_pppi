@@ -15,6 +15,7 @@ namespace simple_graph_library {
 
 template<class T>
 class AdjacencyListGraph : public AbstractGraph<T> {
+public:
     std::vector<Vertex<T>> ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             neighbours(Vertex<T> v) final {
         std::cout << "AdjacencyListGraph::neighbours" << std::endl;

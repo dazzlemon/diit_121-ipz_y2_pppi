@@ -5,8 +5,7 @@
 #include "igraph_test.h"
 
 void adjacency_list_graph_tests() {
-    auto graph = simple_graph_library::AdjacencyListGraph<int>();
-    igraph_test(graph);
+    igraph_test<simple_graph_library::AdjacencyListGraph>();
 }
 
 #endif
