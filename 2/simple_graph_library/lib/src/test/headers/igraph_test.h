@@ -6,6 +6,14 @@
 #include <concepts>
 #include <string>
 #include <cassert>
+#include <ranges>
+
+std::string _char_vertex_vector_to_string(
+        std::vector<simple_graph_library::Vertex<char>> vec) {
+    auto tr = vec | std::views::transform( [] (auto v) { return v.data; } );
+    return std::string(tr.begin(), tr.end());
+}
+
 
 template<template<class> class G>
     requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
@@ -73,11 +81,7 @@ void bfs_test() {
 
     auto graph = _search_test_case<G>();
     auto bfs_vec = graph.bfs(simple_graph_library::Vertex<char>('A'));
-
-    std::string str;
-    for (auto v : bfs_vec) {
-        str += v.data;
-    }
+    auto str = _char_vertex_vector_to_string(bfs_vec);
     assert(str == "ABCDEF");
 }
 
@@ -109,11 +113,7 @@ void dfs_test() {
 
     auto graph = _search_test_case<G>();
     auto dfs_vec = graph.dfs(simple_graph_library::Vertex<char>('A'));
-    
-    std::string str;
-    for (auto v : dfs_vec) {
-        str += v.data;
-    }
+    auto str = _char_vertex_vector_to_string(dfs_vec);
     assert(str == "ABEFCD");
 }
 
@@ -192,11 +192,7 @@ void euler_test() {
     );
 
     auto euler_vec = graph.euler_tour();
-
-    std::string str;
-    for (auto v : euler_vec) {
-        str += v.data;
-    }
+    auto str = _char_vertex_vector_to_string(euler_vec);
     assert(
         str == "CABD" ||
         str == "CDBA" ||
