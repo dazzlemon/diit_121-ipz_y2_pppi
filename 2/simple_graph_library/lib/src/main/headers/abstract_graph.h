@@ -1,12 +1,6 @@
 #ifndef ABSTRACT_GRAPH_H
 #define ABSTRACT_GRAPH_H
 
-#ifdef _WIN32
-#define ABSTRACT_GRAPH_EXPORT_FUNC __declspec(dllexport)
-#else
-#define ABSTRACT_GRAPH_EXPORT_FUNC
-#endif
-
 #include "igraph.h"
 #include "vertex.h"
 #include "abstract_graph_details.h"
@@ -57,11 +51,14 @@ class AbstractGraph : public IGraph<T> {
         }
         return discovered;
     }
-public:
-    // both needed for euler_tour to work
-    virtual auto even_degree_node() -> Vertex<T> = 0;
-    virtual auto odd_degree_node() -> Vertex<T> = 0;
 
+protected:
+    // both needed for euler_tour to work
+    virtual auto _even_degree_node() -> Vertex<T> = 0;
+    virtual auto _odd_degree_node() -> Vertex<T> = 0;
+    virtual auto _n_odd_degree() -> size_t = 0;
+
+public:
     // cant use trailing return type for virtual functions
     auto dfs(Vertex<T> v) -> std::vector<Vertex<T>> final {
         return this->_search<details::StackWrapper>(v);
@@ -104,13 +101,13 @@ public:
         std::vector<Vertex<T>> circuit;
         
         
-        size_t n_odd_degree = -1/*count odd degree vertices*/;// TODO
+        auto n_odd_degree = this->_n_odd_degree();
         if (n_odd_degree != 0 && n_odd_degree != 2) {
             return {};// no euler path exists
         }
         // current vertex
-        Vertex<T> v = n_odd_degree == 0 ? this->even_degree_node()
-                                        : this->odd_degree_node();// == 2
+        Vertex<T> v = n_odd_degree == 0 ? this->_even_degree_node()
+                                        : this->_odd_degree_node();// == 2
 
         do {
             if (this->neighbours(v).empty()) {

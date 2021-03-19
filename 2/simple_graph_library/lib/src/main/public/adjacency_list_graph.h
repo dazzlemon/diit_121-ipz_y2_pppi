@@ -44,14 +44,19 @@ public:
         std::cout << "AdjacencyListGraph::remove_edge" << std::endl;
     }
 
-
-    Vertex<T> ADJACENCY_LIST_GRAPH_EXPORT_FUNC even_degree_node() final {
+protected:
+    Vertex<T> _even_degree_node() final {
         return Vertex<T>();
     }
 
 
-    Vertex<T> ADJACENCY_LIST_GRAPH_EXPORT_FUNC odd_degree_node() final {
+    Vertex<T> _odd_degree_node() final {
         return Vertex<T>();
+    }
+
+
+    size_t _n_odd_degree() final {
+        return 0;// TODO
     }
 };
 }// namespace simple_graph_library
