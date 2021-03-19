@@ -6,46 +6,46 @@
 #include <concepts>
 
 template<template<class> class G>
-    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
-G<int> _search_test_case() {
-    G<int> graph;
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*A*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*B*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*C*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*D*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*E*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*F*/));
+    requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
+G<char> _search_test_case() {
+    G<char> graph;
+    graph.add_vertex(simple_graph_library::Vertex<char>('A'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('B'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('C'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('D'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('E'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('F'));
 
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*A*/),
-        simple_graph_library::Vertex<int>(/*B*/)
+        simple_graph_library::Vertex<char>('A'),
+        simple_graph_library::Vertex<char>('B')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*A*/),
-        simple_graph_library::Vertex<int>(/*C*/)
+        simple_graph_library::Vertex<char>('A'),
+        simple_graph_library::Vertex<char>('C')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*A*/),
-        simple_graph_library::Vertex<int>(/*D*/)
+        simple_graph_library::Vertex<char>('A'),
+        simple_graph_library::Vertex<char>('D')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*B*/),
-        simple_graph_library::Vertex<int>(/*E*/)
+        simple_graph_library::Vertex<char>('B'),
+        simple_graph_library::Vertex<char>('E')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*B*/),
-        simple_graph_library::Vertex<int>(/*F*/)
+        simple_graph_library::Vertex<char>('B'),
+        simple_graph_library::Vertex<char>('F')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*C*/),
-        simple_graph_library::Vertex<int>(/*F*/)
+        simple_graph_library::Vertex<char>('C'),
+        simple_graph_library::Vertex<char>('F')
     );
     return graph;
 }
 
 
 template<template<class> class G>
-    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
+    requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
 void bfs_test() {
     /**
      * test case for bfs
@@ -70,13 +70,13 @@ void bfs_test() {
      */
 
     auto graph = _search_test_case<G>();
-    graph.bfs(simple_graph_library::Vertex<int>(/*A*/));
+    graph.bfs(simple_graph_library::Vertex<char>('A'));
     // TODO: assert result + TODO vertex
 }
 
 
 template<template<class> class G>
-    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
+    requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
 void dfs_test() {
     /**
      * test case for dfs
@@ -101,13 +101,13 @@ void dfs_test() {
      */
 
     auto graph = _search_test_case<G>();
-    graph.dfs(simple_graph_library::Vertex<int>(/*A*/));
+    graph.dfs(simple_graph_library::Vertex<char>('A'));
     // TODO: assert result + TODO vertex
 }
 
 
 template<template<class> class G>
-    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
+    requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
 void euler_test() {
     /**
      * test case for euler path
@@ -152,31 +152,31 @@ void euler_test() {
      * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
      * 
      */
-    G<int> graph;
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*A*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*B*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*C*/));
-    graph.add_vertex(simple_graph_library::Vertex<int>(/*D*/));
+    G<char> graph;
+    graph.add_vertex(simple_graph_library::Vertex<char>('A'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('B'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('C'));
+    graph.add_vertex(simple_graph_library::Vertex<char>('D'));
 
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*A*/),
-        simple_graph_library::Vertex<int>(/*B*/)
+        simple_graph_library::Vertex<char>('A'),
+        simple_graph_library::Vertex<char>('B')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*A*/),
-        simple_graph_library::Vertex<int>(/*C*/)
+        simple_graph_library::Vertex<char>('A'),
+        simple_graph_library::Vertex<char>('C')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*B*/),
-        simple_graph_library::Vertex<int>(/*C*/)
+        simple_graph_library::Vertex<char>('B'),
+        simple_graph_library::Vertex<char>('C')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*D*/),
-        simple_graph_library::Vertex<int>(/*B*/)
+        simple_graph_library::Vertex<char>('D'),
+        simple_graph_library::Vertex<char>('B')
     );
     graph.add_edge(
-        simple_graph_library::Vertex<int>(/*D*/),
-        simple_graph_library::Vertex<int>(/*C*/)
+        simple_graph_library::Vertex<char>('D'),
+        simple_graph_library::Vertex<char>('C')
     );
 
     graph.euler_tour();
@@ -185,7 +185,7 @@ void euler_test() {
 
 
 template<template<class> class G>
-    requires std::derived_from<G<int>, simple_graph_library::IGraph<int>>
+    requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
 void igraph_test() {
     bfs_test<G>();
     dfs_test<G>();

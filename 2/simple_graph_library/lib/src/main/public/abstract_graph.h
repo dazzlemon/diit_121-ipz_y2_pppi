@@ -58,6 +58,10 @@ class AbstractGraph : public IGraph<T> {
         return discovered;
     }
 public:
+    // both needed for euler_tour to work
+    virtual auto even_degree_node() -> Vertex<T> = 0;
+    virtual auto odd_degree_node() -> Vertex<T> = 0;
+
     // cant use trailing return type for virtual functions
     auto dfs(Vertex<T> v) -> std::vector<Vertex<T>> final {
         return this->_search<details::StackWrapper>(v);
@@ -100,15 +104,13 @@ public:
         std::vector<Vertex<T>> circuit;
         
         
-        Vertex<T> v;// current vertex
         size_t n_odd_degree = -1/*count odd degree vertices*/;// TODO
-        if (n_odd_degree == 0) {
-            v /* = choose any even degree node*/;// TODO
-        } else if (n_odd_degree == 2) {
-            v /* = choose one of odd degree nodes*/;// TODO
-        } else {
+        if (n_odd_degree != 0 && n_odd_degree != 2) {
             return {};// no euler path exists
         }
+        // current vertex
+        Vertex<T> v = n_odd_degree == 0 ? this->even_degree_node()
+                                        : this->odd_degree_node();// == 2
 
         do {
             if (this->neighbours(v).empty()) {

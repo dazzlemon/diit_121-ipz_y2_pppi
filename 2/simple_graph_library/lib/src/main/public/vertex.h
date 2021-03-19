@@ -13,7 +13,14 @@ template<class T>
     requires std::totally_ordered<T>
 class Vertex {
 public:
-    T data;// tmp, need to replace with actual data type
+    Vertex() {}// tmp
+
+
+    Vertex(const T& data) {
+        this->data = data;
+    }
+
+    T data;
 
     auto operator<=>(const Vertex& other) -> std::strong_ordering {
         return this->data <=> other.data;

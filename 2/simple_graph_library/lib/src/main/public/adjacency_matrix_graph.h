@@ -43,6 +43,16 @@ public:
             remove_edge(Vertex<T> a, Vertex<T> b) final {
         std::cout << "AdjacencyMatrixGraph::remove_edge" << std::endl;
     }
+
+
+    Vertex<T> ADJACENCY_LIST_GRAPH_EXPORT_FUNC even_degree_node() final {
+        return Vertex<T>();
+    }
+
+
+    Vertex<T> ADJACENCY_LIST_GRAPH_EXPORT_FUNC odd_degree_node() final {
+        return Vertex<T>();
+    }
 };
 }// namespace simple_graph_library
 
