@@ -4,6 +4,8 @@
 #include "igraph.h"
 #include "vertex.h"
 #include <concepts>
+#include <string>
+#include <cassert>
 
 template<template<class> class G>
     requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
@@ -70,8 +72,13 @@ void bfs_test() {
      */
 
     auto graph = _search_test_case<G>();
-    graph.bfs(simple_graph_library::Vertex<char>('A'));
-    // TODO: assert result + TODO vertex
+    auto bfs_vec = graph.bfs(simple_graph_library::Vertex<char>('A'));
+
+    std::string str;
+    for (auto v : bfs_vec) {
+        str += v.data;
+    }
+    assert(str == "ABCDEF");
 }
 
 
@@ -101,8 +108,13 @@ void dfs_test() {
      */
 
     auto graph = _search_test_case<G>();
-    graph.dfs(simple_graph_library::Vertex<char>('A'));
-    // TODO: assert result + TODO vertex
+    auto dfs_vec = graph.dfs(simple_graph_library::Vertex<char>('A'));
+    
+    std::string str;
+    for (auto v : dfs_vec) {
+        str += v.data;
+    }
+    assert(str == "ABEFCD");
 }
 
 
@@ -179,8 +191,18 @@ void euler_test() {
         simple_graph_library::Vertex<char>('C')
     );
 
-    graph.euler_tour();
-    // TODO: assert result + TODO vertex
+    auto euler_vec = graph.euler_tour();
+
+    std::string str;
+    for (auto v : euler_vec) {
+        str += v.data;
+    }
+    assert(
+        str == "CABD" ||
+        str == "CDBA" ||
+        str == "BDCA" ||
+        str == "BACD"
+    );
 }
 
 
