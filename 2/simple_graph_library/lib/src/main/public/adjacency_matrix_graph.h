@@ -7,7 +7,6 @@
 #define ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
 #endif
 
-#include <iostream>// tmp
 #include "abstract_graph.h"
 #include "vertex.h"
 
@@ -18,40 +17,39 @@ class AdjacencyMatrixGraph : public AbstractGraph<T> {
 public:
     std::vector<Vertex<T>> ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
             neighbours(Vertex<T> v) final {
-        std::cout << "AdjacencyMatrixGraph::neighbours" << std::endl;
-        return {};
+        return {};// TODO
     }
 
 
     void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC add_vertex(Vertex<T> v) final {
-        std::cout << "AdjacencyMatrixGraph::add_vertex" << std::endl;
+        // TODO
     }
 
 
     void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
             add_edge(Vertex<T> a, Vertex<T> b) final {
-        std::cout << "AdjacencyMatrixGraph::add_edge" << std::endl;
+        // TODO
     }
 
 
     void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC remove_vertex(Vertex<T> v) final {
-        std::cout << "AdjacencyMatrixGraph::remove_vertex" << std::endl;
+        // TODO
     }
 
 
     void ADJACENCY_MATRIX_GRAPH_EXPORT_FUNC
             remove_edge(Vertex<T> a, Vertex<T> b) final {
-        std::cout << "AdjacencyMatrixGraph::remove_edge" << std::endl;
+        // TODO
     }
 
 protected:
     Vertex<T> _even_degree_node() final {
-        return Vertex<T>();
+        return Vertex<T>();// TODO
     }
 
 
     Vertex<T> _odd_degree_node() final {
-        return Vertex<T>();
+        return Vertex<T>();// TODO
     }
 
 

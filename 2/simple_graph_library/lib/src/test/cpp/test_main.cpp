@@ -4,6 +4,8 @@
 #include <iostream>
 
 auto main() -> int {
+    adjacency_matrix_graph_tests();
+    adjacency_list_graph_tests();
     auto sgl_ascii = R"(
    _____  ______ __ 
   / ___/ / ____// /  
@@ -11,9 +13,8 @@ auto main() -> int {
  ___/ // /_/ // /___
 /____/ \____//_____/
 
+= BUILD SUCCESSFUL! =
+
 )";// tabs are preserved in raw strings
     std::cout << sgl_ascii;
-
-    adjacency_matrix_graph_tests();
-    adjacency_list_graph_tests();
 }

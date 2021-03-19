@@ -5,8 +5,6 @@
 #include "vertex.h"
 #include "abstract_graph_details.h"
 #include <vector>
-#include <stack>
-#include <queue>
 #include <concepts>
 
 namespace simple_graph_library {
