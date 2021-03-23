@@ -51,9 +51,23 @@ class AbstractGraph : public IGraph<T> {
     }
 
 protected:
-    // both needed for euler_tour to work
+    // all needed for euler_tour to work
+
+    /**
+     * @brief Returns any vertex of even degree from this graph. 
+     */
     virtual auto _even_degree_node() -> Vertex<T> = 0;
+
+
+     /**
+     * @brief Returns any vertex of odd degree from this graph.
+     */
     virtual auto _odd_degree_node() -> Vertex<T> = 0;
+
+
+    /**
+     * @brief Returns amount of odd degree vertices in this graph.
+     */
     virtual auto _n_odd_degree() -> size_t = 0;
 
 public:

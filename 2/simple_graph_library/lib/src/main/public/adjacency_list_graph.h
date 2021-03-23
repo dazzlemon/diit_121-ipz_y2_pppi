@@ -12,47 +12,74 @@
 
 namespace simple_graph_library {
 
+/**
+ * Representation of Graph with Adjacency List.
+ */
 template<class T>
 class AdjacencyListGraph : public AbstractGraph<T> {
 public:
+    /**
+     * @brief IGraph<T> override, check the description in that class.
+     */
     std::vector<Vertex<T>> ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             neighbours(Vertex<T> v) final {
         return {};// TODO
     }
 
 
+    /**
+     * @brief IGraph<T> override, check the description in that class.
+     */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC add_vertex(Vertex<T> v) final {
         // TODO
     }
 
 
+    /**
+     * @brief IGraph<T> override, check the description in that class.
+     */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             add_edge(Vertex<T> a, Vertex<T> b) final {
         // TODO
     }
 
 
+    /**
+     * @brief IGraph<T> override, check the description in that class.
+     */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC remove_vertex(Vertex<T> v) final {
         // TODO
     }
 
 
+    /**
+     * @brief IGraph<T> override, check the description in that class.
+     */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             remove_edge(Vertex<T> a, Vertex<T> b) final {
         // TODO
     }
 
-protected:
+private:
+    /**
+     * @brief AbstractGraph<T> override, check the description in that class.
+     */
     Vertex<T> _even_degree_node() final {
         return Vertex<T>();// TODO
     }
 
 
+    /**
+     * @brief AbstractGraph<T> override, check the description in that class.
+     */
     Vertex<T> _odd_degree_node() final {
         return Vertex<T>();// TODO
     }
 
 
+    /**
+     * @brief AbstractGraph<T> override, check the description in that class.
+     */
     size_t _n_odd_degree() final {
         return 0;// TODO
     }
