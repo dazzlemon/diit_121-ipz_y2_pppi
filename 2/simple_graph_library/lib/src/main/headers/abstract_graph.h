@@ -135,6 +135,7 @@ public:
                 v = n;
             }
         } while (!this->neighbours(v).empty() || !s.empty());
+        circuit.push_back(v);
         return circuit;
     }
 };
