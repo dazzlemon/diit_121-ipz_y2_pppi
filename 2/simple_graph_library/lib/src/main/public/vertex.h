@@ -22,9 +22,14 @@ public:
 
     T data;
 
-    auto operator<=>(const Vertex& other) -> std::strong_ordering {
-        return this->data <=> other.data;
-    }
+    friend auto operator<=><>(const Vertex& lhs, const Vertex<T>& rhs)
+        -> std::strong_ordering;
 };
+
+template<class T>
+auto operator<=>(const Vertex<T>& lhs, const Vertex<T>& rhs)
+        -> std::strong_ordering {
+    return lhs.data <=> rhs.data;
+}
 }// namespace simple_graph_library
 #endif

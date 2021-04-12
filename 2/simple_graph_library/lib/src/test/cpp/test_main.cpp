@@ -4,8 +4,8 @@
 #include <iostream>
 
 auto main() -> int {
-    adjacency_matrix_graph_tests();
     adjacency_list_graph_tests();
+    adjacency_matrix_graph_tests();
     auto sgl_ascii = R"(
    _____  ______ __ 
   / ___/ / ____// /  

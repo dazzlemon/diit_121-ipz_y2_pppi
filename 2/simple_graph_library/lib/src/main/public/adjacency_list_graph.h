@@ -9,6 +9,10 @@
 
 #include "abstract_graph.h"
 #include "vertex.h"
+#include <map>
+#include <list>
+#include <set>
+#include <vector>
 
 namespace simple_graph_library {
 
@@ -23,7 +27,12 @@ public:
      */
     std::vector<Vertex<T>> ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             neighbours(Vertex<T> v) final {
-        return {};// TODO
+        auto [first, last] = adjacency_list.equal_range(v);
+        std::vector<Vertex<T>> vec;
+        for (; first != last; first++) {
+            vec.push_back(first->second);
+        }
+        return vec;
     }
 
 
@@ -31,7 +40,7 @@ public:
      * @brief IGraph<T> override, check the description in that class.
      */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC add_vertex(Vertex<T> v) final {
-        // TODO
+        vertices.insert(v);
     }
 
 
@@ -40,7 +49,10 @@ public:
      */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             add_edge(Vertex<T> a, Vertex<T> b) final {
-        // TODO
+        if (vertices.count(a) && vertices.count(b)) {
+            adjacency_list.insert({a, b});
+            adjacency_list.insert({b, a});
+        }
     }
 
 
@@ -48,7 +60,17 @@ public:
      * @brief IGraph<T> override, check the description in that class.
      */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC remove_vertex(Vertex<T> v) final {
-        // TODO
+        if (vertices.count(v)) {
+            vertices.erase(v);
+            adjacency_list.erase(v);
+            for (auto i = adjacency_list.begin(); i != adjacency_list.end();) {
+                if (i->second <=> v == 0) {// ?
+                    i = adjacency_list.erase(i);
+                } else {
+                    i++;
+                }
+            }
+        }
     }
 
 
@@ -57,10 +79,31 @@ public:
      */
     void ADJACENCY_LIST_GRAPH_EXPORT_FUNC
             remove_edge(Vertex<T> a, Vertex<T> b) final {
-        // TODO
+        if (vertices.count(a) && vertices.count(b)) {
+            auto [first_a, last_a] = adjacency_list.equal_range(a);
+            for (; first_a != last_a; first_a++) {
+                if (first_a->second <=> b == 0) {// ?
+                    adjacency_list.erase(first_a);
+                    break;
+                }
+            }
+
+
+            auto [first_b, last_b] = adjacency_list.equal_range(b);
+            for (; first_b != last_b; first_b++) {
+                if (first_b->second <=> a == 0) {// ?
+                    adjacency_list.erase(first_b);
+                    break;
+                }
+            }
+        }
     }
 
 private:
+    std::multimap<Vertex<T>, Vertex<T>> adjacency_list;
+    std::set<Vertex<T>> vertices;
+
+
     /**
      * @brief AbstractGraph<T> override, check the description in that class.
      */
