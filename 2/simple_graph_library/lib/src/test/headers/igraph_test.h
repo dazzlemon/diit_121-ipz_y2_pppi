@@ -195,6 +195,7 @@ void euler_test() {
 
     auto euler_vec = graph.euler_tour();
     auto str = _char_vertex_vector_to_string(euler_vec);
+    std::cout << "str " << str << std::endl;
     assert(
         str == "CABD" ||
         str == "CDBA" ||
@@ -208,7 +209,7 @@ template<template<class> class G>
     requires std::derived_from<G<char>, simple_graph_library::IGraph<char>>
 void igraph_test() {
     bfs_test<G>();
-    dfs_test<G>();
+    //dfs_test<G>();
     euler_test<G>();
 }
 

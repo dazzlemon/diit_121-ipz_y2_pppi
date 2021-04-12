@@ -108,7 +108,12 @@ private:
      * @brief AbstractGraph<T> override, check the description in that class.
      */
     Vertex<T> _even_degree_node() final {
-        return Vertex<T>();// TODO
+        for (auto i : vertices) {
+            if (adjacency_list.count(i) % 2 == 0) {
+                return i;
+            }
+        }
+        throw "error";
     }
 
 
@@ -116,7 +121,12 @@ private:
      * @brief AbstractGraph<T> override, check the description in that class.
      */
     Vertex<T> _odd_degree_node() final {
-        return Vertex<T>();// TODO
+        for (auto i : vertices) {
+            if (adjacency_list.count(i) % 2) {
+                return i;
+            }
+        }
+        throw "error";
     }
 
 
@@ -124,7 +134,13 @@ private:
      * @brief AbstractGraph<T> override, check the description in that class.
      */
     size_t _n_odd_degree() final {
-        return 0;// TODO
+        size_t counter = 0;
+        for (auto i : vertices) {
+            if (adjacency_list.count(i) % 2) {
+                counter++;
+            }
+        }
+        return counter;
     }
 };
 }// namespace simple_graph_library

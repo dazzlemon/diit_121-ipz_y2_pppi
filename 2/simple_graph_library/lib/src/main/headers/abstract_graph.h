@@ -6,6 +6,7 @@
 #include "abstract_graph_details.h"
 #include <vector>
 #include <concepts>
+#include <stdio.h>
 
 namespace simple_graph_library {
 
@@ -126,11 +127,12 @@ public:
                 circuit.push_back(v);
                 if (!s.empty()) {
                     v = s.top(); s.pop();// one action actually
-                } else {
-                    s.push(v);
-                    // take any of v's neighbours, remove the edge between them,
-                    // set v as chosen neighbour
                 }
+            } else {
+                s.push(v);
+                auto n = this->neighbours(v)[0];
+                this->remove_edge(n, v);
+                v = n;
             }
         } while (!this->neighbours(v).empty() || !s.empty());
         return circuit;
