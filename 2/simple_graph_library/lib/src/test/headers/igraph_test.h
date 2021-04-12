@@ -7,6 +7,7 @@
 #include <string>
 #include <cassert>
 #include <ranges>
+#include <iostream>// temp
 
 std::string _char_vertex_vector_to_string(
         std::vector<simple_graph_library::Vertex<char>> vec) {
@@ -114,6 +115,7 @@ void dfs_test() {
     auto graph = _search_test_case<G>();
     auto dfs_vec = graph.dfs(simple_graph_library::Vertex<char>('A'));
     auto str = _char_vertex_vector_to_string(dfs_vec);
+    std::cout << str << std::endl;
     assert(str == "ABEFCD");
 }
 
