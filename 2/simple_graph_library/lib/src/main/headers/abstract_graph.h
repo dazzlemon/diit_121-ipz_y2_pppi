@@ -6,7 +6,6 @@
 #include "abstract_graph_details.h"
 #include <vector>
 #include <concepts>
-#include <stdio.h>
 
 namespace simple_graph_library {
 

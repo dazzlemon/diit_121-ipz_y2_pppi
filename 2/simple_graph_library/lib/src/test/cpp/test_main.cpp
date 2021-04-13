@@ -1,11 +1,9 @@
 #include "adjacency_list_graph_test.h"
-#include "adjacency_matrix_graph_test.h"
 
 #include <iostream>
 
 auto main() -> int {
     adjacency_list_graph_tests();
-    adjacency_matrix_graph_tests();
     auto sgl_ascii = R"(
    _____  ______ __ 
   / ___/ / ____// /  
