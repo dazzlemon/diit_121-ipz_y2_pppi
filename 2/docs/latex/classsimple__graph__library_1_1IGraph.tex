@@ -1,0 +1,119 @@
+\hypertarget{classsimple__graph__library_1_1IGraph}{}\doxysection{simple\+\_\+graph\+\_\+library\+::IGraph$<$ T $>$ Class Template Reference}
+\label{classsimple__graph__library_1_1IGraph}\index{simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_a3a2b81a7a4e797054161c30fe5bfec15}\label{classsimple__graph__library_1_1IGraph_a3a2b81a7a4e797054161c30fe5bfec15}} 
+virtual auto {\bfseries dfs} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ v) -\/$>$ std\+::vector$<$ \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$$>$ IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC=0
+\item 
+\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_a7ce3e7cb2be4a84fb03d1a8e50148b51}\label{classsimple__graph__library_1_1IGraph_a7ce3e7cb2be4a84fb03d1a8e50148b51}} 
+virtual auto {\bfseries bfs} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ v) -\/$>$ std\+::vector$<$ \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$$>$ IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC=0
+\item 
+\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_a44a5fa17a97bfbc114e77d6474ad380d}\label{classsimple__graph__library_1_1IGraph_a44a5fa17a97bfbc114e77d6474ad380d}} 
+virtual auto {\bfseries euler\+\_\+tour} () -\/$>$ std\+::vector$<$ \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$$>$ IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC=0
+\item 
+virtual auto \mbox{\hyperlink{classsimple__graph__library_1_1IGraph_a7bcc2da43235e5b26af917c99bc39103}{neighbours}} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ v) -\/$>$ std\+::vector$<$ \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$$>$ IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC=0
+\begin{DoxyCompactList}\small\item\em Returns vector of vertices that have common edge with $<$v$>$. \end{DoxyCompactList}\item 
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph_a110e52bf4e374a93c18bcf8066f2961d}{add\+\_\+vertex}} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ v)=0
+\begin{DoxyCompactList}\small\item\em Adds vertex $<$v$>$ to this graph. \end{DoxyCompactList}\item 
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph_acb6157f47d90e1233606244e503d03a6}{add\+\_\+edge}} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ a, \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ b)=0
+\begin{DoxyCompactList}\small\item\em Adds edge between two vertices  and {\bfseries{. }}\end{DoxyCompactList}\item 
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph_a9c1de0d32c1d39538ef05981b8a40f7b}{remove\+\_\+vertex}} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ v)=0
+\begin{DoxyCompactList}\small\item\em Removes vertex $<$v$>$ from this graph. \end{DoxyCompactList}\item 
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph_aa9542f089f6eac151586e0524c236f29}{remove\+\_\+edge}} (\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ a, \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$ b)=0
+\begin{DoxyCompactList}\small\item\em Removes edge between two vertices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_acb6157f47d90e1233606244e503d03a6}\label{classsimple__graph__library_1_1IGraph_acb6157f47d90e1233606244e503d03a6}} 
+\index{simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}!add\_edge@{add\_edge}}
+\index{add\_edge@{add\_edge}!simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add\_edge()}{add\_edge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph}{simple\+\_\+graph\+\_\+library\+::\+IGraph}}$<$ T $>$\+::add\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{a,  }\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Adds edge between two vertices  and {\bfseries{. }}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a} & first vertex for new common edge \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & second vertex for new common edge\\
+\hline
+\end{DoxyParams}
+if either  or {\bfseries{ is not in the graph edge is not added. }}\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_a110e52bf4e374a93c18bcf8066f2961d}\label{classsimple__graph__library_1_1IGraph_a110e52bf4e374a93c18bcf8066f2961d}} 
+\index{simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}!add\_vertex@{add\_vertex}}
+\index{add\_vertex@{add\_vertex}!simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add\_vertex()}{add\_vertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph}{simple\+\_\+graph\+\_\+library\+::\+IGraph}}$<$ T $>$\+::add\+\_\+vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Adds vertex $<$v$>$ to this graph. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em v} & vertex to add\\
+\hline
+\end{DoxyParams}
+\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}} doesnt have any edges after adding, they have to be declared separately by function add\+\_\+edge. \mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_a7bcc2da43235e5b26af917c99bc39103}\label{classsimple__graph__library_1_1IGraph_a7bcc2da43235e5b26af917c99bc39103}} 
+\index{simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}!neighbours@{neighbours}}
+\index{neighbours@{neighbours}!simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{neighbours()}{neighbours()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual auto \mbox{\hyperlink{classsimple__graph__library_1_1IGraph}{simple\+\_\+graph\+\_\+library\+::\+IGraph}}$<$ T $>$\+::neighbours (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{v }\end{DoxyParamCaption}) -\/$>$  std\+::vector$<$ \mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$$>$ IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns vector of vertices that have common edge with $<$v$>$. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em v} & vertex to get neighbours from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of neighbouring vertices to $<$v$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_aa9542f089f6eac151586e0524c236f29}\label{classsimple__graph__library_1_1IGraph_aa9542f089f6eac151586e0524c236f29}} 
+\index{simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}!remove\_edge@{remove\_edge}}
+\index{remove\_edge@{remove\_edge}!simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove\_edge()}{remove\_edge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph}{simple\+\_\+graph\+\_\+library\+::\+IGraph}}$<$ T $>$\+::remove\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{a,  }\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Removes edge between two vertices. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a} & first vertex to remove common edge from \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & second vertex to remove common edge from\\
+\hline
+\end{DoxyParams}
+if either  or {\bfseries{ is not in the graph or they dont common edge its not removed(obviously). }}\mbox{\Hypertarget{classsimple__graph__library_1_1IGraph_a9c1de0d32c1d39538ef05981b8a40f7b}\label{classsimple__graph__library_1_1IGraph_a9c1de0d32c1d39538ef05981b8a40f7b}} 
+\index{simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}!remove\_vertex@{remove\_vertex}}
+\index{remove\_vertex@{remove\_vertex}!simple\_graph\_library::IGraph$<$ T $>$@{simple\_graph\_library::IGraph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove\_vertex()}{remove\_vertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void IGRAPH\+\_\+\+EXPORT\+\_\+\+FUNC \mbox{\hyperlink{classsimple__graph__library_1_1IGraph}{simple\+\_\+graph\+\_\+library\+::\+IGraph}}$<$ T $>$\+::remove\+\_\+vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsimple__graph__library_1_1Vertex}{Vertex}}$<$ T $>$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Removes vertex $<$v$>$ from this graph. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em v} & vertex to remove\\
+\hline
+\end{DoxyParams}
+if $<$v$>$ is not in the graph its not removed(obviously). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/dazzlemon/hdd\+\_\+backup/github/diit\+\_\+121-\/ipz\+\_\+y2\+\_\+pppi/2/simple\+\_\+graph\+\_\+library/lib/src/main/public/igraph.\+h\end{DoxyCompactItemize}
